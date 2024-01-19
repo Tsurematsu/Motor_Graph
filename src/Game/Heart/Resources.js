@@ -1,5 +1,6 @@
 import System from '../../tools/System.js';
-export default function LoadResources () {
+export default function LoadResources (Config) {
+    
 
     this.keydown = (e) => {};
     this.keyup = (e) => {};
@@ -8,11 +9,7 @@ export default function LoadResources () {
         vars = {};
         vars.resources = {};
         console.log("Loading resources...");
-        let resources = [
-            {name:"player", url:"/src/img/player.png"},
-            {name:"blocks", url:"/src/img/blocks.png"},
-
-        ]
+        let resources = Config.URLS;
         vars.resources.keys = await System.Import.json("/src/Game/Data/Keys.json");
         vars.resources.images = await System.Import.img(resources)
         
@@ -49,9 +46,9 @@ export default function LoadResources () {
             let File_blocks = vars.resources.images.File.blocks;
             let blocks_Sheet = graph.draw.spriteSheet(File_blocks, {cols: 6, rows: 3}).create();
             
-            let block_1 = (await blocks_Sheet.draw[1][4].get()).image;
+            let block_1 = (await blocks_Sheet.draw[0][1].get()).image;
             let size_block_1 = {width: 70, height: 70};
-            let texture_matrix = {cols: 6, rows: 6}
+            let texture_matrix = {cols: 4, rows: 4}
             let texture_block_1 = await graph.draw.texture2(block_1, texture_matrix,  size_block_1);
             
             vars.resources.blocks.pared = texture_block_1;

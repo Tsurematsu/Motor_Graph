@@ -1,0 +1,8 @@
+{
+    "URLS":[
+        {"name":"player", "url":"/src/img/player.png"},
+        {"name":"blocks", "url":"/src/img/blocks.png"}
+    ],
+    "fps":24,
+    "time":1000
+}

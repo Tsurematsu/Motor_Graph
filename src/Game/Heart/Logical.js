@@ -7,11 +7,12 @@ export default function Logical () {
         down: false,
         left: false,
         right: false,
+        space: false,
     }
     let player = {
         point: {x:0, y:0},
         size: {width: 100, height: 100},
-        speed: 5,
+        speed: 10,
         image: null,
         keys: {...Register_keys},
     };
@@ -35,12 +36,29 @@ export default function Logical () {
     };
 
     let animate = 0;
-    let Time_animate = {limit:5, count:10};
+    let Time_animate = {limit:3, count:10};
     let Time_stop = {limit:2, count:0};
+    let Count_Jump = {limit:4, count:{up:0, down:0}, jump:false}
     let Orientation = null;
     this.loop = ({ graph, scripts, vars })=>{
         player = vars.logic.player;
         Disabled = vars.logic.Disabled;
+
+        if (Count_Jump.jump) {
+            if (Count_Jump.count.up >= Count_Jump.limit) {
+                if (Count_Jump.count.down >= Count_Jump.limit) {
+                    Count_Jump.count.up = 0;
+                    Count_Jump.count.down = 0;
+                    Count_Jump.jump = false;
+                }
+                Count_Jump.count.down++;
+                player.point.y += player.speed;
+            }else{
+                Count_Jump.count.up++;
+                player.point.y -= player.speed;
+            }
+            
+        }
 
         if (!Time_animate.cache) {Time_animate.cache = Time_animate.limit}
         if (!Time_stop.cache) {Time_stop.cache = Time_stop.limit}
@@ -80,6 +98,10 @@ export default function Logical () {
         if (player.keys.right && !Disabled.HIGH.right && !Disabled.LOW.right) {
             Orientation = "right";
             player.point.x += player.speed;
+            ActiveMove = true;
+        }
+        if (player.keys.space && !Disabled.HIGH.space && !Disabled.LOW.space) {
+            Count_Jump.jump = true;
             ActiveMove = true;
         }
 

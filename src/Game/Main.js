@@ -1,24 +1,28 @@
 import Graph from "../tools/Graph.js";
-
+import System from "../tools/System.js";
 import Logical from "./Heart/Logical.js";
 import Draw from "./Heart/Draw.js";
-import LoadResources from "./Heart/LoadResources.js";
-export default  function mainGame (canvas, Document) {
+import LoadResources from "./Heart/Resources.js";
+export default  function Main (canvas, Document) {
     const graph = new Graph(canvas);
     let Looping;
-    this.fps = 30;
+    this.fps = 20;
     this.time = 1000/this.fps;
     this.scripts = [];
     graph.setSize({ width: 500, height: 300, resolution: 1 });
     let pause = false;
     this.start = async function () {
+        let Config = await System.Import.json("/src/Game/Data/config.json");
+        this.fps = Config.fps;
+        this.time = Config.time/this.fps;
+
         let objParam = {
             graph: graph,
             scripts: this.scripts,
             vars: null,
         };
 
-        let Local_LoadResources = new LoadResources();
+        let Local_LoadResources = new LoadResources(Config);
         let Local_Logical = new Logical();
         let Local_Draw = new Draw();
         
