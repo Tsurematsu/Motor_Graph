@@ -10,9 +10,10 @@ export default function Draw() {
     
     let look = false;
     this.loop = ({ graph, scripts, vars })=>{
-        graph.draw.clean();
+        // graph.draw.clean();
+        // graph.draw.Image(vars.logic.player.image, vars.logic.player.point, vars.logic.player.size);
+        
         // let image = vars.resources.player.left[0]
-        graph.draw.Image(vars.logic.player.image, vars.logic.player.point, vars.logic.player.size);
         // graph.draw.point(vars.logic.player.point, 10, "blue");
         // vars.logic.player.point
         return { graph, scripts, vars};

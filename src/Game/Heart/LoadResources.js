@@ -13,10 +13,9 @@ export default function LoadResources () {
             {name:"blocks", url:"/src/img/blocks.png"},
 
         ]
-
         vars.resources.keys = await System.Import.json("/src/Game/Data/Keys.json");
-
         vars.resources.images = await System.Import.img(resources)
+        
         async function make_Player(){
             let File_player = vars.resources.images.File.player;
             let player_Sheet = graph.draw.spriteSheet(File_player, {cols: 4, rows: 4}).create();
@@ -47,7 +46,8 @@ export default function LoadResources () {
         async function make_Blocks(){
             let File_blocks = vars.resources.images.File.blocks;
             let blocks_Sheet = graph.draw.spriteSheet(File_blocks, {cols: 6, rows: 3}).create();
-            vars.resources.blocks = blocks_Sheet.draw;
+            // vars.resources.blocks = blocks_Sheet.draw;
+            blocks_Sheet.draw[1][0].apply()
         }
         await make_Blocks()
 
