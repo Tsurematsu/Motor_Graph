@@ -8,6 +8,7 @@ export default async function LoadResources ({ graph, scripts, vars }, Document)
     let resources = [
         {name:"player", url:"/src/img/player.png"},
         {name:"blocks", url:"/src/img/blocks.png"},
+        
     ]
 
     vars.resources.images = await System.Import.img(resources)
