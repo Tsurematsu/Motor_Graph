@@ -3,7 +3,7 @@ export default function Graph(canvas) {
     this.canvas = canvas;
     this.context = context;
 
-    this.setSize = function({ width, height, resolution }) {
+    this.setSize = function({ width, height, resolution=1 }) {
         canvas.width = width * resolution;
         canvas.height = height * resolution;
         canvas.style.width = width + "px";

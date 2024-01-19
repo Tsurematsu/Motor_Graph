@@ -1,8 +1,23 @@
 {
-    "URLS":[
-        {"name":"player", "url":"/src/img/player.png"},
-        {"name":"blocks", "url":"/src/img/blocks.png"}
-    ],
+    "resources":{
+        "URLS":[
+            {"name":"player", "url":"/src/img/player.png"},
+            {"name":"blocks", "url":"/src/img/blocks.png"}
+        ]
+    },
+    "logical":{
+        "player":{
+            "point": {
+                "x":100, 
+                "y":100
+            },
+            "size": {
+                "width": 100, 
+                "height": 100
+            },
+            "speed": 5
+        }
+    },
     "fps":24,
     "time":1000
 }

@@ -1,5 +1,5 @@
 let init = true;
-export default function Logical () {
+export default function Logical (Config) {
     let keys;
     let KeyDown = false;
     let Register_keys = {
@@ -10,9 +10,9 @@ export default function Logical () {
         space: false,
     }
     let player = {
-        point: {x:0, y:0},
-        size: {width: 100, height: 100},
-        speed: 10,
+        point: Config.logical.player.point,
+        size: Config.logical.player.size,
+        speed: Config.logical.player.speed,
         image: null,
         keys: {...Register_keys},
     };

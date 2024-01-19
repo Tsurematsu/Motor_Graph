@@ -9,7 +9,7 @@ export default function LoadResources (Config) {
         vars = {};
         vars.resources = {};
         console.log("Loading resources...");
-        let resources = Config.URLS;
+        let resources = Config.resources.URLS;
         vars.resources.keys = await System.Import.json("/src/Game/Data/Keys.json");
         vars.resources.images = await System.Import.img(resources)
         
