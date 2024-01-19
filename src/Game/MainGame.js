@@ -1,9 +1,8 @@
 import Graph from "../tools/Graph.js";
-import System from "../tools/System.js";
 
-import Logical from "./Logical.js";
-import Draw from "./Draw.js";
-import LoadResources from "./LoadResources.js";
+import Logical from "./Heart/Logical.js";
+import Draw from "./Heart/Draw.js";
+import LoadResources from "./Heart/LoadResources.js";
 export default  function mainGame (canvas, Document) {
     const graph = new Graph(canvas);
     let Looping;
@@ -11,29 +10,52 @@ export default  function mainGame (canvas, Document) {
     this.time = 1000/60;
     this.scripts = [];
     graph.setSize({ width: 500, height: 300, resolution: 1 });
-    let LoadStatus = true;
     let pause = false;
-    this.start = function () {
+    this.start = async function () {
         let objParam = {
             graph: graph,
             scripts: this.scripts,
             vars: null,
         };
+
+        let Local_LoadResources = new LoadResources();
+        let Local_Logical = new Logical();
+        let Local_Draw = new Draw();
         
+        Document.addEventListener("keydown", Local_LoadResources.keydown);
+        Document.addEventListener("keyup", Local_LoadResources.keyup);
+        
+        Document.addEventListener("keydown", Local_Logical.keydown);
+        Document.addEventListener("keyup", Local_Logical.keyup);
+        
+        Document.addEventListener("keydown", Local_Draw.keydown);
+        Document.addEventListener("keyup", Local_Draw.keyup);
+        
+        // scripts.forEach(script => {
+        //     if(script.draw != undefined) {
+        //         let Return = script.draw({ graph, scripts, vars });
+        //         if(Return != undefined) {
+        //             graph = Return.graph;
+        //             scripts = Return.scripts;
+        //             vars = Return.vars;
+        //         };
+        //     };
+        // });
+
+        objParam = await Local_LoadResources.void(objParam);
+        objParam = await Local_Logical.void(objParam);
+        objParam = await Local_Draw.void(objParam);
+
         Looping = setInterval(async () => {
             if (!pause) {
-                if (LoadStatus) {
-                    LoadStatus = false; 
-                    objParam = await LoadResources(objParam, Document);
-                }
-                objParam = await Logical(objParam);
-                objParam = await Draw(objParam);
+                objParam = await Local_LoadResources.loop(objParam);
+                objParam = await Local_Logical.loop(objParam);
+                objParam = await Local_Draw.loop(objParam);
             }
         }, this.time);
     }
     this.stop = function () {
         clearInterval(Looping);
-        LoadStatus = true;
     }
     this.pause = function () {
         pause = true;
@@ -43,20 +65,3 @@ export default  function mainGame (canvas, Document) {
     }
 
 }
-    // let images = await System.Import.img([
-    //     { name: "cat", url: "/src/img/cat.jpg" },
-    //     { name: "block", url: "/src/img/block1.jpeg" },
-    //     { name: "player", url: "/src/img/player.png" },
-    //     { name: "blocks", url: "/src/img/blocks.png" },
-    // ]);
-
-    // const canvas = document.getElementById("canvas");
-    // const graph = new Graph(canvas);
-    // graph.testDraw({
-    //                 image:images.File.cat, 
-    //                 block1:images.File.block, 
-    //                 sheet:images.File.player, 
-    //                 blocks:images.File.blocks,
-    //                 draw_player:false
-    //             });
-    
