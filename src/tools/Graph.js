@@ -10,6 +10,13 @@ export default function Graph(canvas) {
         canvas.style.height = height + "px";
     }
 
+    this.block = (blocks, size)=>{
+        return {
+            width: size.width * blocks.cols,
+            height: size.height * blocks.rows
+        }
+    }
+
     this.draw = new function () {
 
         // This function to generate image for ofter canvas
@@ -97,6 +104,10 @@ export default function Graph(canvas) {
                 size,
                 inSize
             }
+        }
+
+        this.texture2 = async function(image, matrix, size) {
+            return await this.texture(image, {width:size.width*matrix.cols, height:size.height*matrix.rows}, size);
         }
         
         // This function is used to create a sprite sheet
@@ -197,6 +208,7 @@ export default function Graph(canvas) {
 
     }
 
+
     // This function is used to test the canvas
     this.testDraw = async ({image, block1, sheet, blocks, draw_player=false}) => {
         // clean screen
@@ -231,14 +243,9 @@ export default function Graph(canvas) {
         // set block size for texture
         let block_size = {width:50, height:50};
         //this function is used to calculate the size of the texture
-        let size_texture = (blocks, size)=>{
-            return {
-                width: size.width * blocks.cols,
-                height: size.height * blocks.rows
-            }
-        }
+        
         // make size texture of block2
-        let block_2 = size_texture({cols:2, rows:2}, block_size);
+        let block_2 = this.block({cols:2, rows:2}, block_size);
         // make texture of block2
         let Texture_to_Block = await this.draw.texture(IMG_Generated_Block_2.image, block_2, block_size);
         // draw texture of block2

@@ -17,6 +17,7 @@ export default function LoadResources () {
         vars.resources.images = await System.Import.img(resources)
         
         async function make_Player(){
+            console.log("Load player...");
             let File_player = vars.resources.images.File.player;
             let player_Sheet = graph.draw.spriteSheet(File_player, {cols: 4, rows: 4}).create();
             let save_images = {
@@ -36,7 +37,6 @@ export default function LoadResources () {
                 });
             }
             for (const key in save_images) {save_images[key] = save_images[key].list;}
-            console.log("Load player...");
             await Promise.all(Promises);
             vars.resources.player = save_images;
             console.log("Load player =>OK");    
@@ -44,10 +44,18 @@ export default function LoadResources () {
         await make_Player()
 
         async function make_Blocks(){
+            console.log("Loading blocks...");
+            vars.resources.blocks = {};
             let File_blocks = vars.resources.images.File.blocks;
             let blocks_Sheet = graph.draw.spriteSheet(File_blocks, {cols: 6, rows: 3}).create();
-            // vars.resources.blocks = blocks_Sheet.draw;
-            blocks_Sheet.draw[1][0].apply()
+            
+            let block_1 = (await blocks_Sheet.draw[1][4].get()).image;
+            let size_block_1 = {width: 70, height: 70};
+            let texture_matrix = {cols: 6, rows: 6}
+            let texture_block_1 = await graph.draw.texture2(block_1, texture_matrix,  size_block_1);
+            
+            vars.resources.blocks.pared = texture_block_1;
+            console.log("Loading blocks =>OK");
         }
         await make_Blocks()
 

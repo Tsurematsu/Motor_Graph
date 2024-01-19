@@ -6,8 +6,8 @@ import LoadResources from "./Heart/LoadResources.js";
 export default  function mainGame (canvas, Document) {
     const graph = new Graph(canvas);
     let Looping;
-    this.fps = 60;
-    this.time = 1000/60;
+    this.fps = 30;
+    this.time = 1000/this.fps;
     this.scripts = [];
     graph.setSize({ width: 500, height: 300, resolution: 1 });
     let pause = false;

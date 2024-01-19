@@ -36,7 +36,7 @@ export default function Logical () {
 
     let animate = 0;
     let Time_animate = {limit:5, count:10};
-    let Time_stop = {limit:5, count:0};
+    let Time_stop = {limit:2, count:0};
     let Orientation = null;
     this.loop = ({ graph, scripts, vars })=>{
         player = vars.logic.player;
