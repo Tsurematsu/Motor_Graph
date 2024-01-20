@@ -1,5 +1,6 @@
 export default function Graph(canvas) {
     const context = canvas.getContext("2d");
+    let baseSize;
     this.canvas = canvas;
     this.context = context;
 
@@ -8,6 +9,30 @@ export default function Graph(canvas) {
         canvas.height = height * resolution;
         canvas.style.width = width + "px";
         canvas.style.height = height + "px";
+        baseSize = {width, height};
+    }
+
+    this.setScreen = function({ width, height, resolution=1 }) {
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+    }
+
+    this.getBase = function() {
+        return baseSize;
+    }
+
+    this.getSize = function() {
+        return {
+            width: canvas.width,
+            height: canvas.height,
+        }
+    }
+
+    this.getScreen = function() {
+        return {
+            width: canvas.style.width,
+            height: canvas.style.height,
+        }
     }
 
     this.block = (blocks, size)=>{
@@ -202,10 +227,6 @@ export default function Graph(canvas) {
             SpriteSheet:this.spriteSheet,
             getArea:this.getArea    
         }
-    }
-
-    this.testGift = async (img)=>{
-
     }
 
 

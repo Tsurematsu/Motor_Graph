@@ -24,13 +24,13 @@ async function main() {
         }
     });
 
-    window.addEventListener("resize", ()=>{
-        game.local_Graph.setSize({
-            width: window.innerWidth, 
-            height: window.innerHeight, 
-            resolution: 1 
-        })
-    });
+    // window.addEventListener("resize", ()=>{
+    //     let relation = window.innerWidth/window.innerHeight;
+    //     game.local_Graph.setScreen({
+    //         width: (game.local_Graph.getBase().width/2)*relation, 
+    //         height: (game.local_Graph.getBase().height/2)*relation, 
+    //     })
+    // });
     
     let statusFullScreen = false;
     canvas.addEventListener("dblclick", ()=>{
