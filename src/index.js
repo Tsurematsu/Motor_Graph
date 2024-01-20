@@ -12,27 +12,30 @@ async function main() {
 
     let game = new Main(canvas, document.body, sizeScreen);
     
-    // await game.start();
+    /*
+    await game.start();
 
-    // Object.entries(game.keyList).forEach(([key, value],) => {
-    //     let elemento = document.getElementById(key);
-    //     if (elemento) {
-    //         elemento.addEventListener("mousedown", ()=>{game.event_Keys.keydown(value);});
-    //         elemento.addEventListener("mouseup", ()=>{game.event_Keys.keyup(value);});
-    //         elemento.addEventListener("mouseout", ()=>{game.event_Keys.keyup(value);});//Cuando se pierde el foco
-    //     }
-    // });
+    Object.entries(game.keyList).forEach(([key, value],) => {
+        let elemento = document.getElementById(key);
+        if (elemento) {
+            elemento.addEventListener("mousedown", ()=>{game.event_Keys.keydown(value);});
+            elemento.addEventListener("mouseup", ()=>{game.event_Keys.keyup(value);});
+            elemento.addEventListener("mouseout", ()=>{game.event_Keys.keyup(value);});//Cuando se pierde el foco
+        }
+    });
     
-    // let statusFullScreen = false;
-    // canvas.addEventListener("dblclick", ()=>{
-    //     if (statusFullScreen) {
-    //         statusFullScreen = false;
-    //         document.exitFullscreen();
-    //     }else{
-    //         document.body.requestFullscreen();
-    //         statusFullScreen = true;
-    //     }
-    // })
+    let statusFullScreen = false;
+    canvas.addEventListener("dblclick", ()=>{
+        if (statusFullScreen) {
+            statusFullScreen = false;
+            document.exitFullscreen();
+        }else{
+            document.body.requestFullscreen();
+            statusFullScreen = true;
+        }
+    })
+    
+    */
 }
 main();
 
