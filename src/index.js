@@ -51,12 +51,10 @@ let example = new function(){
     // console.log("line 2 ", this);
 }
 
-let example2 = class{
-    constructor(){
-        this.apply1 = "Hello World";
-        this.apply2 = "Hello World";
-        let apply3 = "Hello World";
-        // console.log("line 2 ", this);
+class example2{
+    #apply1 ="Hello World";
+    get apply1(){
+        return this.#apply1;
     }
 }
 
@@ -66,12 +64,14 @@ let example3 = {
     apply3: "Hello World",
     apply4: function(){
         console.log(this.apply1);
-        console.log("line 2 ", this);
     }
-
 }
 
-console.log(example3.apply4());
+console.log(example.apply1);
+
+let objeto1 = new example2();
+// objeto1.apply1 = "Hello World 2";
+// console.log(objeto1.apply1);
 
 // console.log("line 3 ", this);
 
