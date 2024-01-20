@@ -222,11 +222,14 @@ export default function Graph(canvas) {
             })
         }
 
+        // Use Resources in top level Tools Graph, use in next line
+        /*
         let Compound_resources = {
             Texture:this.texture,
             SpriteSheet:this.spriteSheet,
             getArea:this.getArea    
         }
+        */
     }
 
 
