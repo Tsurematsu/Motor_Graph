@@ -46,7 +46,7 @@ export default function LoadResources (Config) {
             let File_blocks = vars.resources.images.File.blocks;
             let blocks_Sheet = graph.draw.spriteSheet(File_blocks, {cols: 6, rows: 3}).create();
             
-            let block_1 = (await blocks_Sheet.draw[0][1].get()).image;
+            let block_1 = (await blocks_Sheet.draw[0][3].get()).image;
             let size_block_1 = {width: 70, height: 70};
             let texture_matrix = {cols: 4, rows: 4}
             let texture_block_1 = await graph.draw.texture2(block_1, texture_matrix,  size_block_1);

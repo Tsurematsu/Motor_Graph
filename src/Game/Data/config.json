@@ -15,9 +15,9 @@
                 "width": 100, 
                 "height": 100
             },
-            "speed": 5
+            "speed": 10
         }
     },
-    "fps":24,
+    "fps":30,
     "time":1000
 }
