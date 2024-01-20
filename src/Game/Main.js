@@ -35,11 +35,10 @@ export default  function Main (canvas, Document, size) {
         let ImportPromises = [];
         let ObjectScripts = [];
         Object.entries(Scripts).forEach(([key, value],) => {
-             ImportPromises.push(new Promise((resolve, reject) => {
-                System.Import.js(value).then((Script) => {
-                    ObjectScripts.push(new Script(Config));
-                    resolve();
-                });
+             ImportPromises.push(new Promise(async (resolve, reject) => {
+                let Script = await System.Import.js(value);
+                ObjectScripts.push(new Script(Config));
+                resolve();
              }))
         });
         await Promise.all(ImportPromises);
