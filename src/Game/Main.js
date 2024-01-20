@@ -19,8 +19,13 @@ export default  function Main (canvas, Document, size) {
     this.local_Graph = graph;
     let pause = false;
     
-    this.event_Keys = new function () {this.keydown = ()=>{};this.keyup = ()=>{};};
+    this.keyPressed = new function () {
+        this.keydown = (e)=>{}
+        this.keyup = (e)=>{}
+    }
+
     this.keyList={};
+
     this.start = async function () {
         let Config = await System.Import.json("/src/Game/Data/config.json");
 
