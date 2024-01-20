@@ -157,8 +157,8 @@ export default function Graph(canvas) {
                 
                 // This function is used to create a sprite sheet
                 this.create = (point, size)=>{
-                    Intern_size = size || Intern_size;
-                    Intern_point = point || Intern_point;
+                    if (size != undefined) {Intern_size = size;}
+                    if (point != undefined) {Intern_point = point;}
                     for (let rows = 0; rows < matrix.rows; rows++) {
                         let row = [];
                         for (let cols = 0; cols < matrix.cols; cols++) {
