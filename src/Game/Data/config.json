@@ -18,6 +18,9 @@
             "speed": 10
         }
     },
+    "scripts":{
+        "Movements":"/src/Game/Scripts/Movements.js"
+    },
     "fps":30,
     "time":1000
 }
