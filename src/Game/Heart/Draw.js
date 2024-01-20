@@ -5,7 +5,8 @@ export default function Draw() {
     
     this.void=({ graph, scripts, vars })=>{
         
-        return { graph, scripts, vars};
+
+        return { graph, scripts, vars };
     };
     
     let look = true;

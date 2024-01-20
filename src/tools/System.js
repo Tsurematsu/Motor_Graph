@@ -1,8 +1,16 @@
 export default new function System() {
     this.Import = new function () {
         this.json = async(url) => {
-            return await new Promise((resolve, reject) => { fetch(url).then(respond => { resolve(respond.json()) }).catch(err => { reject(err) }) });
+            return await new Promise((resolve, reject) => { 
+                fetch(url).then(respond => { 
+                    resolve(respond.json()) 
+                }).catch(err => { reject(err) }) });
         }
+        this.text = async(url) => {
+            return await new Promise((resolve, reject) => { 
+                fetch(url).then(respond => { resolve(respond.text()) }).catch(err => { reject(err) }) });
+        }
+
         this.img = async(Files_URL) => {
             let promises = [];
             let Data = {};
