@@ -31,9 +31,9 @@ export default new function System() {
             return { Data, File, Loaded, Canvas };
         }
     }
-    this.Make = new function () {
-        this.callback = (stringCalling) => {
-            return (new Function('return ' + stringCalling))();
-        }
-    }   
+    // this.Make = new function () {
+    //     this.callback = (stringCalling) => {
+    //         return (new Function('return ' + stringCalling))();
+    //     }
+    // }   
 }
