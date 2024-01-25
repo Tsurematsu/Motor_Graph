@@ -1,0 +1,9 @@
+{
+    "events":"/src/native/Logics/",
+    "maps":"/src/mapas/maps.json",
+    "layers":{
+        "resources":"./layers/resources.js",
+        "logical": "./layers/logical.js",
+        "draw":"./layers/draw.js"
+    }
+}

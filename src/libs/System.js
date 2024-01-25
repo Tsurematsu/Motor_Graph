@@ -1,5 +1,5 @@
 export default new function System() {
-    this.Import = new function () {
+    this.import = new function () {
         this.json = async(url) => {
             return await new Promise((resolve, reject) => { 
                 fetch(url).then(respond => { 
