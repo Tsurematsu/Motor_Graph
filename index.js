@@ -1,5 +1,5 @@
 import Game from "./src/Game.js";
-async function index(){
+async function Motor_Graph(){
     let Resolution = 82;
     let thisSize = {
         width: (6 * Resolution),
@@ -14,4 +14,4 @@ async function index(){
     document.body.addEventListener("keydown", (event)=>{Game.keyEvents.KeyDown(event);});
     document.body.addEventListener("keyup", (event)=>{Game.keyEvents.KeyUp(event);});
 }
-index();
+Motor_Graph();
