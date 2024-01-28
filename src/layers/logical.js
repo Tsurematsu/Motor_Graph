@@ -6,9 +6,9 @@ export default new function logical(){
         Area = importMain.game.getArea()
         keyEvents.KeyUp = (event)=>{}
         keyEvents.KeyDown = (event)=>{}
-
     }
     this.loop = async ()=>{
+        
         importMain.objects.forEach((object)=>{
             if (buildInit) {
                 properties = {...properties , ...object.getProperties()};

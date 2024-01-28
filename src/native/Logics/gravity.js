@@ -10,5 +10,5 @@ export default function gravity(object){
         object.cacheGravity.constan += object.getProperties().gravity;
         point.y += object.cacheGravity.constan;
     }
-    point.y -=10;
+    
 } 
