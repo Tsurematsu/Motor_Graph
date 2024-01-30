@@ -5,7 +5,7 @@ export default new function map1(){
         let {circle} = importMain.nativeObjects;
         
         importMain.objects.push(new circle()
-            .addProperty({gravity: 0.5})
+            .addProperty({gravity: 0.4})
             .setPoint({x:100, y:10}));
     
     }

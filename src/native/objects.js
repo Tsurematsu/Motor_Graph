@@ -12,6 +12,7 @@ export default function objects(draw, Area) {
             properties[key] = object[key]; 
             return this;
         }
+        
         this.setPoint = (I_point)=>{point = I_point; return this;}
         this.getPoint = ()=>{return point;}
         
